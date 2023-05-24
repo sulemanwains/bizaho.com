@@ -753,7 +753,7 @@
                         <h3>How Can I <span>Help You?</span></h3>
                       </div>
 
-                      <form id="contact_form" class="contact-form" method="post" onsubmit="submitContactForm()">
+                      <form id="contact_form" class="contact-form" method="post" onsubmit="submitContactForm(this)">
 
                         <div class="messages"></div>
 
@@ -825,7 +825,8 @@
     <script src="js/validator.js"></script>
     <script src="js/main.js"></script>
     <script>
-      function submitContactForm() {
+      function submitContactForm(event) {
+        event.preventDefault();
         // Get the form data
         const name = document.getElementById('form_name').value;
         const email = document.getElementById('form_email').value;
@@ -850,18 +851,15 @@
         })
         .then(response => {
           console.log(response);
-          if (response.ok) {
+          alert('Contact form submitted successfully');
+          document.getElementById('contact_form').reset();
+          /*if (response.ok) {
             // Success
-
-            alert('Contact form submitted successfully');
-            document.getElementById('contact_form').reset();
+           
           } else {
             // Error
             alert('Error submitting contact form');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
+          }*/
         });
       }
 
