@@ -28,7 +28,6 @@ jobs:
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
-      - uses: chetan/invalidate-cloudfront-action@v2
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_NAME }}
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
