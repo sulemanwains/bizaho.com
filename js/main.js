@@ -62,7 +62,7 @@
                 subject: subject,
                 message: message
                 };
-                $.ajax({
+                /*$.ajax({
                     type: "POST",
                     url: url,
                     data: requestBody,
@@ -75,7 +75,23 @@
                             $('#contact_form')[0].reset();
                         }
                     }
-                });
+                });*/
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                  })
+                  .then(response => {
+                    var messageAlert = 'alert-success';
+                    var messageText = 'Contact form submitted successfully!';
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    if (messageAlert && messageText) {
+                        $('#contact_form').find('.messages').html(alertBox);
+                        $('#contact_form')[0].reset();
+                    }
+                  })
                 return false;
             }
         });
