@@ -753,7 +753,7 @@
                         <h3>How Can I <span>Help You?</span></h3>
                       </div>
 
-                      <form id="contact_form" class="contact-form" method="post" onsubmit="submitContactForm(this)">
+                      <form id="contact_form" class="contact-form" method="post">
 
                         <div class="messages"></div>
 
@@ -824,46 +824,7 @@
 
     <script src="js/validator.js"></script>
     <script src="js/main.js"></script>
-    <script>
-      function submitContactForm(event) {
-        event.preventDefault();
-        // Get the form data
-        const name = document.getElementById('form_name').value;
-        const email = document.getElementById('form_email').value;
-        const subject = document.getElementById('form_subject').value;
-        const message = document.getElementById('form_message').value;
-        
-        // Construct the request body
-        const requestBody = {
-          name: name,
-          email: email,
-          subject: subject,
-          message: message
-        };
-        
-        // Send the request to the API
-        fetch('https://5iibf6lju4.execute-api.us-east-1.amazonaws.com/prod/contactform', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-        })
-        .then(response => {
-          console.log(response);
-          alert('Contact form submitted successfully');
-          document.getElementById('contact_form').reset();
-          /*if (response.ok) {
-            // Success
-           
-          } else {
-            // Error
-            alert('Error submitting contact form');
-          }*/
-        });
-      }
 
-      </script>
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7cc3ab852d35223a","version":"2023.4.0","r":1,"b":1,"token":"94b99c0576dc45bf9d669fb5e9256829","si":100}' crossorigin="anonymous"></script>
 </body>
 
